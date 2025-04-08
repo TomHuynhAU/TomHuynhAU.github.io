@@ -1,0 +1,590 @@
+body {
+    max-width: 1905px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.wallpaper {
+    position: relative;
+    min-height: 100vh;
+}
+
+.background {
+    position: absolute;
+    top: -10px; /* Đẩy lớp nền lên trên để tránh viền */
+    left: -10px;
+    width: calc(100% + 20px); /* Mở rộng chiều rộng */
+    height: calc(100% + 20px); /* Mở rộng chiều cao */
+    background-image: url('https://images8.alphacoders.com/553/thumb-1920-553234.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px) grayscale(100); /* Làm mờ ảnh nền */
+    z-index: 1;
+    opacity: 1; /* Làm tối ảnh nền */
+    overflow: hidden; /* Cắt phần thừa ra ngoài */
+}
+
+
+.background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Tông màu tối */
+    z-index: 1; /* Đảm bảo phủ lên lớp nền nhưng dưới nội dung */
+}
+
+.content {
+    position: relative;
+    z-index: 2; /* Đặt nội dung phía trước */
+    color: white; /* Màu chữ phù hợp với nền */
+}
+
+.wrap {
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1216px;
+    height: 64px;
+}
+
+.wrap .navbar {
+    letter-spacing: 2px;
+    position: relative;
+    margin-left: 70px;
+    padding: 15px 20px;
+}
+
+.wrap .navbar a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.wrap .navbar a:hover {
+    color: black;
+    background-color: rgb(33, 161, 247);
+}
+
+
+.navbar--playnow a {
+    border-radius: 4px;
+    padding: 10px 20px;
+    background-color: rgb(33, 161, 247);
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.logo p {
+    margin-top: 10px;
+    margin-left: 50px;
+    position: absolute;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.wrap .logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+    justify-content: center; /* Căn giữa các phần tử theo chiều dọc */
+}
+
+.content--h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Đặt chiều rộng đầy đủ để cân bằng */
+    max-width: 1280px; /* Giới hạn chiều rộng tối đa để đồng bộ */
+    height: 506px;
+    margin: 0 auto; /* Căn giữa phần tử */
+}
+
+.content--button {
+    font-family: 'Roboto', sans-serif;
+    height: fit-content;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-bottom: 20px; /* Tạo khoảng cách giữa nút và chữ phía dưới */
+}
+
+.content--title {
+    color: red;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin: 0px 10px 10px 10px;
+}
+
+.title {
+    display: block; /* Đảm bảo nội dung xuống dòng */
+    text-align: center; /* Căn giữa nội dung */
+    color: white; /* Màu chữ trắng */
+    font-size: 4rem; /* Kích thước chữ */
+    font-weight: bold;
+    margin-top: 10px; /* Khoảng cách giữa dòng trên và dòng này */
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    margin-top: 10px;
+    line-height: 1.5; /* Căn chỉnh khoảng cách dòng để dễ đọc */
+}
+
+.title--h2 {
+    margin-top: 10px;
+    max-width: 775px;
+    max-height: 80px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: -100px; /* Điều chỉnh giá trị này nhỏ lại để xích lên trên */
+    position: relative; /* Đảm bảo giữ vị trí tương đối để dễ kiểm soát */
+  }
+
+.content--button2 {
+    color: white;
+    text-decoration: none;
+    background-color: #db3b3b;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    padding: 15px 25px;
+    border-radius: 10px;
+}
+
+.content--button2:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.content--button3 {
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 1px solid #db3b3b;
+    color: white;
+    text-decoration: none;
+}
+
+.content--button3:hover {
+    color: red;
+    background-color: white;
+}
+
+.footer {
+    display: flex; /* Kích hoạt Flexbox */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    position: relative; /* Đảm bảo vị trí tương đối */
+    background-color: #0c0d0f;
+    width: 100vw;
+    height: 1400px;
+}
+.column-container {
+    width: 1280px;
+    height: 744px;
+}
+
+.title--box {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.box1 {
+    width: 1280px;
+    height: 168px; /* Cố định chiều cao của ô */
+    overflow: hidden; /* Ẩn phần dư của hình ảnh */
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: 2px solid #27282a;
+}
+
+.image-section {
+    position: relative;
+}
+
+.image-section img {
+    width: 1280px;
+    height: 168px;
+    filter: blur(5px) grayscale(100);
+}
+
+.box1--text {
+    position: absolute; /* Chữ sẽ nằm đè lên hình */
+    top: 25%; /* Canh chỉnh chữ ở giữa theo chiều dọc */
+    right: -130px; /* Canh chỉnh chữ ở giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Căn chỉnh chính xác vào giữa */
+    color: white; /* Màu chữ nổi bật trên nền */
+    font-size: 2rem; /* Kích thước chữ */
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    font-weight: bold; /* Chữ đậm */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Tạo hiệu ứng đổ bóng chữ */
+}
+
+.box1--text2 {
+    border-radius: 15px;
+    padding: 15px 140px;
+    background-color: #384152;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 65%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+}
+
+.box1--text2:hover {
+    background-color: #384152a1;
+}
+
+.box1--text3 {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.box1--text4 {  
+    position: absolute;
+    top: 60%;
+    left: 3%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.box2 {
+    width: 1280px;
+    height: 168px;
+    margin-bottom: 20px;
+    overflow: hidden; /* Ẩn phần dư của hình ảnh */
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: 2px solid #27282a;
+}
+
+.image-section1 {
+    position: relative;
+}
+
+.image-section1 img {
+    width: 1280px;
+    height: 168px;
+    filter: blur(5px) grayscale(100);
+}
+
+.box2--text {
+    position: absolute; /* Chữ sẽ nằm đè lên hình */
+    top: 25%; /* Canh chỉnh chữ ở giữa theo chiều dọc */
+    right: -110px; /* Canh chỉnh chữ ở giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Căn chỉnh chính xác vào giữa */
+    color: white; /* Màu chữ nổi bật trên nền */
+    font-size: 2rem; /* Kích thước chữ */
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    font-weight: bold; /* Chữ đậm */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Tạo hiệu ứng đổ bóng chữ */
+}
+
+.box2--text2 {
+    border-radius: 15px;
+    padding: 15px 80px;
+    background-color: #384152;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 65%;
+    left: 87.5%;
+    transform: translate(-50%, -50%);
+}
+
+.box2--text2:hover {
+    background-color: #384152a1;
+}
+
+.box2--text3 {
+    position: absolute;
+    top: 25%;
+    left: 7%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.box2--text4 {  
+    position: absolute;
+    top: 60%;
+    left: 3%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.box3 {
+    width: 1280px;
+    height: 168px;
+    overflow: hidden; /* Ẩn phần dư của hình ảnh */
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: 2px solid #27282a;
+}
+
+.image-section2 {
+    position: relative;
+}
+
+.image-section2 img {
+    width: 1280px;
+    height: 168px;
+    filter: blur(5px) grayscale(100);
+}
+
+.box3--text {
+    position: absolute; /* Chữ sẽ nằm đè lên hình */
+    top: 25%; /* Canh chỉnh chữ ở giữa theo chiều dọc */
+    right: -60px; /* Canh chỉnh chữ ở giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Căn chỉnh chính xác vào giữa */
+    color: white; /* Màu chữ nổi bật trên nền */
+    font-size: 2rem; /* Kích thước chữ */
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    font-weight: bold; /* Chữ đậm */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Tạo hiệu ứng đổ bóng chữ */
+}
+
+.box3--text2 {
+    border-radius: 15px;
+    padding: 15px 50px;
+    background-color: #dc2625;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 65%;
+    left: 91%;
+    transform: translate(-50%, -50%);
+}
+
+.box3--text2:hover {
+    background-color: rgba(218, 104, 104, 0.76)
+}
+
+.box3--text3 {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.box3--text4 {  
+    position: absolute;
+    top: 60%;
+    left: 3%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Font chữ đồng nhất */
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.box4 {
+    position: relative;
+    margin-top: 20px;
+    width: 1280px;
+    height: 80px;
+    background-color: #13181e;
+    border-radius: 15px;
+    border: 2px solid #27282a;
+}
+
+.box4--text {
+    position: absolute; /* Chữ sẽ nằm đè lên hình */
+    top: 50%; /* Canh chỉnh chữ ở giữa theo chiều dọc */
+    right: 70%; /* Canh chỉnh chữ ở giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Căn chỉnh chính xác vào giữa */
+    color: white; /* Màu chữ nổi bật trên nền */
+    font-size: 1.5rem; /* Kích thước chữ */
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    font-weight: bold; /* Chữ đậm */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Tạo hiệu ứng đổ bóng chữ */
+}
+
+.arrow {
+    position: absolute;
+    top: 25%; /* Canh chỉnh chữ ở giữa theo chiều dọc */
+    right: 3%; /* Canh chỉnh chữ ở giữa theo chiều ngang */
+    width: 0; /* Chiều rộng = 0 để tạo tam giác */
+    height: 0; /* Chiều cao = 0 để tạo tam giác */
+    border-top: 18px solid transparent; /* Đường viền trên trong suốt */
+    border-bottom: 18px solid transparent; /* Đường viền dưới trong suốt */
+    border-left: 18px solid gray; /* Đường viền trái là màu mũi tên */
+}
+
+.wrap-box-question {
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    top: 62.8%;
+    right: inherit;
+    width: 1905px;
+    height: 520px;
+}
+
+.box-question {
+    position: absolute;
+    width: 1536px;
+    height: 520px;
+}
+
+.question--title {
+    color: white;
+    font-size: 1.5rem; /* Kích thước chữ */
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    font-weight: bold; /* Chữ đậm */ 
+}
+
+.question--box {
+    margin-top: 10px;
+    width: 90%;
+    display: flex;
+    width: 1536px;
+    height: auto;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.question--box1 {
+    margin: 10px 5px 5px 0px;
+    width: 500px;
+    height: 110px;
+    background-color: #0e0e0e;
+    border-radius: 5px; /* Bo góc ô đỏ */
+}
+
+.question--box1 h3 {
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    font-weight: bold; /* Chữ đậm */ 
+    color: white;
+    font-size: 20px;
+}
+
+.question--box1 h4 {
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    color: #8c92aa;
+    font-size: 18px;
+}
+
+.contact {
+    margin-top: 50px;
+    width: 100%;
+    height: 104px;
+    line-height: 1.6;
+    background-color: red;
+}
+
+.contact--title {
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    color: white;
+    font-weight: bold;
+    
+}
+
+.contact span {
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    color: white;
+}
+
+.contact--players {
+    position: relative;
+    top: -20%;
+    left: 70%;
+    font-family: 'Roboto', sans-serif; /* Font chữ đẹp */
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+.author {
+    display: flex;
+    flex-direction: column; /* Sắp xếp nội dung theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+}
+
+.author span {
+    display: block;
+    line-height: 0.4;
+}
+
+.author span:first-child {
+    margin-top: 30px;
+    display: block;
+    color: white; /* Màu chữ */
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.author span:last-child {
+    display: block;
+    color: white; /* Màu chữ */
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
