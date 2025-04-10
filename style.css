@@ -21,13 +21,12 @@ body {
 }
 
 .loading-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 20px;
-    animation: fadeInOut 2s infinite;
+    width: 100vw;
+    height: 100vh;
+    /* animation: fadeInOut 2s infinite; */
 }
 
-@keyframes fadeInOut {
+/* @keyframes fadeInOut {
 
     0%,
     100% {
@@ -39,7 +38,7 @@ body {
         opacity: 1;
         transform: scale(1);
     }
-}
+} */
 
 .wallpaper {
     position: relative;
