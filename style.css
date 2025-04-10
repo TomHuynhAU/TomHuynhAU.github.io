@@ -163,7 +163,7 @@ body {
 
 
 .navbar--playnow a {
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 10px 20px;
     background-color: rgb(33, 161, 247);
     text-decoration: none;
@@ -221,6 +221,11 @@ body {
     font-weight: bold;
     font-size: 19px;
     margin-bottom: 10px;
+    text-shadow:
+        2px 2px 0 black,
+        -2px -2px 0 black,
+        -2px 2px 0 black,
+        2px -2px 0 black;
 }
 
 .content--h4 {
@@ -237,7 +242,7 @@ body {
     background-color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 10px 20px;
-    border-radius: 50px;
+    border-radius: 10px;
     margin-bottom: 20px;
     /* Tạo khoảng cách giữa nút và chữ phía dưới */
 }
@@ -255,9 +260,22 @@ body {
     /* Đảm bảo nội dung xuống dòng */
     text-align: center;
     /* Căn giữa nội dung */
-    color: #a2e0ff;
+    color: #fff;
+    text-shadow:
+        2px 2px 0 black,
+        -2px -2px 0 black,
+        -2px 2px 0 black,
+        2px -2px 0 black,
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #6fb0ee,
+        0 0 82px #6fb0ee,
+        0 0 92px #6fb0ee,
+        0 0 102px #6fb0ee,
+        0 0 151px #6fb0ee;
     /* Màu chữ trắng */
-    font-size: 19px;
+    font-size: 30px;
     /* Kích thước chữ */
     font-weight: bold;
     margin-top: 10px;
