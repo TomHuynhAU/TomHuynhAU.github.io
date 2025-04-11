@@ -7,6 +7,22 @@ body {
     overflow-x: hidden;
 }
 
+.slide-up {
+    transform: translateY(50px);
+    /* Ban đầu dịch chuyển 50px xuống dưới */
+    opacity: 0;
+    /* Ban đầu ẩn */
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+    /* Hiệu ứng chuyển động */
+}
+
+.slide-up.show {
+    transform: translateY(0);
+    /* Di chuyển về vị trí ban đầu */
+    opacity: 1;
+    /* Hiển thị */
+}
+
 #loading {
     position: fixed;
     top: 0;

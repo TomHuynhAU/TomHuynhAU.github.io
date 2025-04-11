@@ -5,6 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
     document.body.style.overflowY = "auto";
   }, 7000); // Tùy thời gian loading
+
+  const slideUpElements = document.querySelectorAll(".slide-up");
+
+  // Thêm lớp 'show' để kích hoạt hiệu ứng sau khi tải trang
+  slideUpElements.forEach((element) => {
+    setTimeout(() => {
+      element.classList.add("show");
+    }, 6500); // Delay 500ms trước khi hiệu ứng bắt đầu
+  });
 });
 
 window.addEventListener("load", function () {
