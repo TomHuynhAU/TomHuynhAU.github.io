@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'gtastreet';
+    src: url('font/FONTGTA.TTF') format(truetype);
+}
+
 body {
     max-width: 1905px;
     height: auto;
@@ -5,6 +10,55 @@ body {
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+}
+
+.title {
+    position: relative;
+    font-family: 'gtastreet', sans-serif;
+    font-size: 120px;
+    color: white;
+    display: flex;
+    gap: 0.2rem;
+    overflow: hidden;
+    bottom: 10%;
+    opacity: 0;
+    /* transform: translateY(-20px);
+    transition: opacity 1.5s ease, transform 1.5s ease; */
+}
+
+.title.show {
+    opacity: 1;
+    animation: slideIn 2.5s forwards;
+}
+
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-50px);
+    /* Chữ xuất hiện từ trái */
+    animation: slideIn 3.5s forwards;
+}
+
+.letter.blue {
+    color: #00aaff;
+}
+
+.space {
+    width: 1rem;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+        /* Điểm bắt đầu từ trái */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        /* Đến vị trí cuối */
+    }
 }
 
 .slide-up {
@@ -306,40 +360,15 @@ body {
     margin: 0px 10px 10px 10px;
 }
 
-.title {
-    display: block;
-    /* Đảm bảo nội dung xuống dòng */
-    text-align: center;
-    /* Căn giữa nội dung */
-    color: #fff;
-    text-shadow:
-        2px 2px 0 black,
-        -2px -2px 0 black,
-        -2px 2px 0 black,
-        2px -2px 0 black,
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #6fb0ee,
-        0 0 82px #6fb0ee,
-        0 0 92px #6fb0ee,
-        0 0 102px #6fb0ee,
-        0 0 151px #6fb0ee;
-    /* Màu chữ trắng */
-    font-size: 30px;
-    /* Kích thước chữ */
-    font-weight: bold;
-    margin-top: 10px;
-    /* Khoảng cách giữa dòng trên và dòng này */
-    font-family: 'Roboto', sans-serif;
-    /* Font chữ đồng nhất */
-    line-height: 1.5;
-    /* Căn chỉnh khoảng cách dòng để dễ đọc */
+.street {
+    color: #21a1f8;
 }
 
 .title--h2 {
+    position: relative;
+    bottom: 50%;
     word-spacing: 2px;
-    margin-top: 20px;
+    margin-top: 15px;
     max-width: 775px;
     max-height: 80px;
     font-size: 16px;
@@ -364,7 +393,6 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 40px;
     /* Điều chỉnh giá trị này nhỏ lại để xích lên trên */
     position: relative;
     /* Đảm bảo giữ vị trí tương đối để dễ kiểm soát */

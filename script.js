@@ -1,18 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Bật ngăn cuộn ngay khi DOM sẵn sàng
+  // Ẩn cuộn ngay khi DOM sẵn sàng
   document.body.style.overflow = "hidden";
+
   // Tắt ngăn cuộn khi hoàn tất loading
   setTimeout(() => {
     document.body.style.overflowY = "auto";
-  }, 7000); // Tùy thời gian loading
+  }, 7000); // Thời gian loading
 
+  const titleElements = document.querySelectorAll(".title");
   const slideUpElements = document.querySelectorAll(".slide-up");
 
-  // Thêm lớp 'show' để kích hoạt hiệu ứng sau khi tải trang
-  slideUpElements.forEach((element) => {
+  // Hiệu ứng xuất hiện của chữ GTA STREET
+  titleElements.forEach((element1) => {
     setTimeout(() => {
-      element.classList.add("show");
-    }, 6500); // Delay 500ms trước khi hiệu ứng bắt đầu
+      element1.classList.add("show");
+
+      // Khi hiệu ứng của chữ GTA STREET hoàn tất, hiển thị .slide-up
+      setTimeout(() => {
+        slideUpElements.forEach((element) => {
+          element.classList.add("show");
+        });
+      }, 500); // Delay 2 giây sau khi chữ GTA STREET hiện xong
+    }, 6500); // Delay trước khi hiệu ứng GTA STREET bắt đầu
   });
 });
 
