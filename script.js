@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let progress = 0;
 
   // Ẩn thanh cuộn khi loading bắt đầu
-  // document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
 
   // Tăng dần phần trăm và chiều rộng thanh loading
   const interval = setInterval(() => {
