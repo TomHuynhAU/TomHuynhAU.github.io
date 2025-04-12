@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let progress = 0;
 
+  // Ẩn thanh cuộn khi loading bắt đầu
+  // document.body.style.overflow = "hidden";
+
   // Tăng dần phần trăm và chiều rộng thanh loading
   const interval = setInterval(() => {
     progress += 1;
@@ -20,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
         loading.classList.add("hidden"); // Thêm lớp hidden để mờ dần
         setTimeout(() => {
           loading.style.display = "none"; // Ẩn hoàn toàn sau khi mờ dần
+          // Hiển thị lại thanh cuộn sau khi loading hoàn tất
+          document.body.style.overflow = "";
         }, 500); // Thời gian khớp với transition trong CSS
       }, 500); // Thêm 0.5 giây để hoàn tất hiệu ứng
     }

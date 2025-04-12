@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @font-face {
-    font-family: 'Radwave Demo';
-    src: url('./fonts/RadwaveDemoRegular.woff2') format('woff2'),
-        url('./fonts/RadwaveDemoRegular.woff') format('woff'),
-        url('./RadwaveFont-Demo.otf') format('truetype');
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -263,8 +260,7 @@ html {
 }
 
 #info2 h2 {
-    font-family: "Radwave Demo", sans-serif;
-    font-size: 22px;
+    font-family: "Kanit", sans-serif;
     margin: 20px;
 }
 
@@ -285,6 +281,12 @@ h3 {
     font-family: 'Radwave Demo', sans-serif;
     font-size: 35px;
     margin: 10% 0%;
+}
+
+#about .row,
+p {
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .logo-bird {
