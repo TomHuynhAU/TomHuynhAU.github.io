@@ -243,8 +243,9 @@ p {
 /* Galerie */
 
 #galerie h2 {
-    font-family: 'Radwave Demo', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 50px;
+    font-weight: bold;
     margin: 50px 0;
 }
 
