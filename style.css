@@ -38,6 +38,12 @@ html {
     margin-right: 10px;
 }
 
+.title-gtastreet {
+    text-align: center;
+    font-weight: bold;
+}
+
+
 
 /* NAVBAR */
 
@@ -225,13 +231,13 @@ p {
 }
 
 #score h2 {
-    font-family: "Radwave Demo", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 22px;
     margin: 20px;
 }
 
 #score p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
 }
 
