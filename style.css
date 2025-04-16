@@ -359,6 +359,16 @@ footer a:hover {
         height: 375px;
     }
 
+    .info img {
+        position: absolute;
+        width: 300px;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+    }
+
     .info h1 {
         font-size: 40px;
     }
