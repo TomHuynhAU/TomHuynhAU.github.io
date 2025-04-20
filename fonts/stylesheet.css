@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Radwave Demo';
+    src: url('RadwaveDemoRegular.woff2') format('woff2'),
+        url('RadwaveDemoRegular.woff') format('woff'),
+        url('./RadwaveFont-Demo.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
