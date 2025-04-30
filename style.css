@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
+    height: auto;
+    width: 100%;
+}
+
+/* Thanh Navbar */
+.navbar {
+    background-color: #1c1c1c;
+    height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-inner {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.logo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #00bfff;
+}
+
+/* Avatar */
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #111;
+    /* nền đen hoặc #000 nếu bạn dùng full đen */
+}
+
+.hero {
+    display: relative;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.avatar {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.4);
+    object-fit: cover;
+}
+
+.avatar-container {
+    background: linear-gradient(90deg, #f7971e, #ad1deb);
+    padding: 5px;
+    /* độ dày của viền */
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Content */
+
+.intro {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro h1 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.highlight {
+    display: inline-block;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #f7971e, #ad1deb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.intro p {
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn.primary {
+    background: white;
+    color: black;
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon */
+
+.experience {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.experience h2 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.tech-icons i {
+    font-size: 50px;
+    /* kích thước icon */
+    opacity: 0.85;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tech-icons i:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+/*Project*/
+
+.projects {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.projects h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+
+    background: linear-gradient(90deg, #D5491D, #FF8660);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.project-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.project-card {
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 320px;
+    text-align: left;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info p {
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.project-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/*Experience*/
+
+.experience-section {
+    max-width: 800px;
+    margin: 100px auto 0;
+    padding: 0 20px;
+}
+
+.experience-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 24px;
+    letter-spacing: 2px;
+
+    background: linear-gradient(90deg, #5BADFF, #1373D1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.job {
+    margin-bottom: 40px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.company-icon {
+    width: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.job-header strong {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.job p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.contact-section {
+    background-color: #111;
+    padding: 80px 20px;
+    color: white;
+}
+
+.contact-section {
+    background-color: #151515;
+    padding: 80px 20px;
+    color: white;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-container h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.contact-container p {
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.contact-container .email {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.contact-container .email i {
+    margin-right: 10px;
+    color: #ccc;
+}
+
+.social-icons {
+    display: flex;
+    gap: 25px;
+    font-size: 18px;
+}
+
+.social-icons a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #f26d3d;
+}
+
+html {
+    scroll-behavior: smooth;
+}
