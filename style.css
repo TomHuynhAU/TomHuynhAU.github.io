@@ -741,3 +741,110 @@ p {
         height: 220px;
     }
 }
+
+/* ================================
+   Certificates — cards grid
+================================== */
+.certs-section {
+    max-width: 1100px;
+    margin: 70px auto 0;
+    padding: 0 20px;
+}
+
+.certs-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 26px;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: .14em;
+}
+
+.certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.cert-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+}
+
+.cert-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(91, 173, 255, .35);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .5);
+}
+
+.cert-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cert-issuer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #e9eefb;
+}
+
+.issuer-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.cert-date {
+    color: #cfd6e7;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.cert-title {
+    font-size: 16px;
+    margin: 6px 0 4px;
+}
+
+.cert-note {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.cert-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.cert-actions {
+    margin-top: auto;
+}
+
+.btn.small {
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 12px;
+}
+
+/* responsive tweak */
+@media (max-width: 768px) {
+    .certs-section {
+        margin-top: 50px;
+    }
+}
