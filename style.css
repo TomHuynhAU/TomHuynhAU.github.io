@@ -688,16 +688,19 @@ p {
 .project-card .card-cover {
     position: absolute;
     inset: 0;
-    /* phủ toàn bộ card */
     border-radius: 18px;
-    /* để overlay không che icon khi focus/hover: */
     z-index: 1;
+    /* overlay ở dưới icon */
+    pointer-events: auto;
+    /* card click được */
 }
 
 .project-card .project-info {
     position: relative;
     z-index: 2;
+    /* icon nằm trên overlay, click được */
 }
+
 
 /* hàng nút ở cuối card */
 .project-links {
