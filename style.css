@@ -855,6 +855,16 @@ p {
     box-shadow: 0 2px 6px rgba(91, 173, 255, 0.3);
 }
 
+.cert-status.complete {
+    background: green;
+    color: #0b1220;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0, 255, 47, 0.3);
+}
+
 
 /* responsive tweak */
 @media (max-width: 768px) {
