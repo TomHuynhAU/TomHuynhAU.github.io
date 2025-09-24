@@ -250,30 +250,53 @@
 
             <div class="certs-grid">
                 <!-- Card 1 -->
-                <article class="cert-card">
+                <article class="cert-card" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
                     <header class="cert-top">
                         <div class="cert-issuer">
-                            <img src="assets/icons/microsoft.png" alt="Microsoft logo" class="issuer-icon">
-                            <span>Microsoft</span>
+                            <img src="assets/icons/hackerrank.png" alt="HackerRank logo" class="issuer-icon"
+                                loading="lazy" width="24" height="24">
+                            <span itemprop="recognizedBy" itemscope itemtype="https://schema.org/Organization">
+                                <meta itemprop="name" content="HackerRank">
+                                HackerRank
+                            </span>
                         </div>
-                        <span class="cert-status complete">Complete</span>
+                        <span class="cert-status complete" title="Issued on 23 Sep 2025">Verified</span>
                     </header>
 
-                    <h3 class="cert-title">MS-900: Microsoft 365 Fundamentals</h3>
-                    <p class="cert-note">Currently studying — expected completion 2025.</p>
+                    <h3 class="cert-title" itemprop="name">Python (Basic)</h3>
 
-                    <div class="cert-tags">
-                        <span class="tag">Cloud</span>
+                    <!-- Thêm hình preview certificate -->
+                    <div class="cert-preview">
+                        <a href="https://www.hackerrank.com/certificates/568f0c910eea" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Open HackerRank Python (Basic) certificate in a new tab">
+                            <img src="assets/icons/python-cert.png" alt="HackerRank Python Basic Certificate preview">
+                        </a>
+                    </div>
+
+                    <p class="cert-note" itemprop="description">Skills validated via HackerRank assessment.</p>
+
+                    <meta itemprop="datePublished" content="2025-09-23">
+                    <meta itemprop="identifier" content="568F0C910EEA">
+
+                    <div class="cert-tags" aria-label="Tags">
+                        <span class="tag">Python</span>
                         <span class="tag">Productivity</span>
                     </div>
 
                     <div class="cert-actions">
-                        <a class="btn small" href="#" target="_blank" rel="noopener">View credential</a>
+                        <a class="btn small" href="https://www.hackerrank.com/certificates/568f0c910eea" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="View HackerRank Python (Basic) credential in a new tab">
+                            View credential
+                        </a>
                     </div>
                 </article>
 
+
+
                 <!-- Card 2 -->
-                <article class="cert-card">
+                <!-- <article class="cert-card">
                     <header class="cert-top">
                         <div class="cert-issuer">
                             <img src="assets/icons/google.png" alt="Google logo" class="issuer-icon">
@@ -293,10 +316,10 @@
                     <div class="cert-actions">
                         <a class="btn small" href="#" target="_blank" rel="noopener">View credential</a>
                     </div>
-                </article>
+                </article> -->
 
                 <!-- Card 3 -->
-                <article class="cert-card">
+                <!-- <article class="cert-card">
                     <header class="cert-top">
                         <div class="cert-issuer">
                             <img src="assets/icons/aws.png" alt="AWS logo" class="issuer-icon">
@@ -316,7 +339,7 @@
                     <div class="cert-actions">
                         <a class="btn small" href="#" target="_blank" rel="noopener">View credential</a>
                     </div>
-                </article>
+                </article> -->
             </div>
         </section>
 

@@ -865,6 +865,29 @@ p {
     box-shadow: 0 2px 6px rgba(0, 255, 47, 0.3);
 }
 
+.cert-preview {
+    margin: 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.cert-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.25s ease;
+}
+
+.cert-preview img:hover {
+    transform: scale(1.02);
+}
+
+.cert-preview a:hover img {
+    transform: scale(1.02);
+}
+
 
 /* responsive tweak */
 @media (max-width: 768px) {
