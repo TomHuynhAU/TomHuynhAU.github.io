@@ -895,3 +895,205 @@ p {
         margin-top: 50px;
     }
 }
+
+/* --- Hamburger (ẩn desktop) --- */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--card-border);
+    height: 40px;
+    width: 44px;
+    border-radius: 10px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==== Desktop menu (>=901px) ==== */
+@media (min-width: 901px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    /* Hiển thị menu trong header, ẩn off-canvas */
+    .nav-links-desktop {
+        list-style: none;
+        display: flex;
+        gap: 22px;
+        margin: 0;
+    }
+
+    .nav-links-desktop li a {
+        position: relative;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 10px 4px;
+        opacity: .92;
+        transition: opacity .2s ease;
+    }
+
+    .nav-links-desktop li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 6px;
+        height: 2px;
+        width: 0%;
+        background: linear-gradient(90deg, var(--primary), var(--grad-2));
+        transition: width .25s ease;
+    }
+
+    .nav-links-desktop li a:hover {
+        opacity: 1;
+    }
+
+    .nav-links-desktop li a:hover::after {
+        width: 100%;
+    }
+
+    /* Ẩn hoàn toàn drawer/backdrop ở desktop */
+    .nav-drawer {
+        display: none !important;
+    }
+
+    .nav-backdrop {
+        display: none !important;
+    }
+}
+
+/* ==== Mobile off-canvas (<=900px) ==== */
+@media (max-width: 900px) {
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 5000;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    /* Ẩn menu desktop ở mobile */
+    .nav-links-desktop {
+        display: none;
+    }
+
+    /* Drawer trượt từ phải */
+    .nav-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 78vw;
+        max-width: 360px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 80px 16px 16px;
+        background: rgba(13, 14, 17, .96);
+        backdrop-filter: blur(10px);
+        border-left: 1px solid var(--card-border);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, .35);
+        transform: translateX(100%);
+        transition: transform .32s cubic-bezier(.2, .8, .2, 1);
+        z-index: 10000;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+
+        /* Bỏ dấu chấm của <ul> */
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    /* Link mobile: underline chỉ bằng chữ */
+    .nav-drawer li a {
+        display: inline-block;
+        /* chiếm đúng độ rộng text */
+        padding: 10px 0;
+        /* padding dọc, không padding ngang */
+        margin: 6px 8px;
+        /* tạo khoảng cách ngang bằng margin */
+        font-size: 16px;
+        color: #fff;
+        text-decoration: none;
+        position: relative;
+        font-weight: 600;
+        opacity: .92;
+        transition: opacity .2s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-drawer li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        /* sát chữ */
+        height: 2px;
+        width: 0;
+        background: linear-gradient(90deg, var(--primary), var(--grad-2));
+        transition: width .25s ease;
+    }
+
+    .nav-drawer li a:hover,
+    .nav-drawer li a:focus-visible {
+        opacity: 1;
+    }
+
+    .nav-drawer li a:hover::after,
+    .nav-drawer li a:focus-visible::after {
+        width: 100%;
+        /* 100% = bằng chiều rộng chữ */
+    }
+
+    /* Backdrop */
+    .nav-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .35);
+        backdrop-filter: blur(1px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease;
+        z-index: 9000;
+        /* dưới drawer, trên nội dung */
+    }
+
+    /* State mở */
+    .nav-open .nav-drawer {
+        transform: translateX(0);
+    }
+
+    .nav-open .nav-backdrop {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Khoá scroll nền khi mở */
+    .nav-open,
+    .nav-open body {
+        overflow: hidden;
+    }
+}
+
+/* === Scroll Reveal (fade-up) === */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .6s ease, transform .6s ease;
+    will-change: opacity, transform;
+}
+
+.reveal.in-view {
+    opacity: 1;
+    transform: none;
+}
+
+/* Stagger: con sẽ trễ dần khi cha có data-stagger */
+[data-stagger]>* {
+    /* delay sẽ được set inline bằng JS; để fallback 0ms */
+    transition-delay: var(--delay, 0ms);
+}

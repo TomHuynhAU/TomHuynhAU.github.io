@@ -52,10 +52,19 @@
     <a class="sr-only" href="#main">Skip to content</a>
 
     <!-- NAV -->
+    <!-- NAV -->
     <nav class="navbar" aria-label="Primary">
         <div class="navbar-inner">
             <div class="logo">Tom Huynh <span style="font-weight:400; opacity:.7">| Portfolio</span></div>
-            <ul class="nav-links" role="list">
+
+            <!-- Nút hamburger (chỉ hiện mobile) -->
+            <button class="menu-toggle" id="navToggle" aria-label="Open main menu" aria-expanded="false"
+                aria-controls="navDrawer">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- MENU DESKTOP (nằm trong header) -->
+            <ul class="nav-links-desktop" role="list">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
@@ -64,6 +73,19 @@
             </ul>
         </div>
     </nav>
+
+    <!-- MENU MOBILE OFF-CANVAS (ngoài nav) -->
+    <ul class="nav-drawer" id="navDrawer" role="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Backdrop -->
+    <div class="nav-backdrop" id="navBackdrop" hidden></div>
+
 
     <main id="main" tabindex="-1">
         <!-- HERO -->
@@ -436,6 +458,93 @@
       ]
     }
   </script>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const primaryNav = document.getElementById('primaryNav');
+        const navBackdrop = document.getElementById('navBackdrop');
+
+        function setOpen(open) {
+            document.documentElement.classList.toggle('nav-open', open);
+            navToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+            if (navBackdrop) {
+                if (open) navBackdrop.removeAttribute('hidden');
+                else navBackdrop.setAttribute('hidden', '');
+            }
+        }
+
+        navToggle?.addEventListener('click', () => {
+            const open = !document.documentElement.classList.contains('nav-open');
+            setOpen(open);
+        });
+
+        // Đóng khi bấm link
+        primaryNav?.addEventListener('click', e => {
+            if (e.target.closest('a')) setOpen(false);
+        });
+
+        // Đóng khi bấm nền mờ
+        navBackdrop?.addEventListener('click', () => setOpen(false));
+
+        // Đóng bằng phím Esc
+        window.addEventListener('keydown', e => {
+            if (e.key === 'Escape') setOpen(false);
+        });
+    </script>
+    <script>
+        (() => {
+            const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // 1) Chọn mục tiêu & gắn class reveal
+            const sections = [...document.querySelectorAll('section:not(.hero)')];
+            const cards = [...document.querySelectorAll('.project-card, .cert-card, .job')];
+
+            const allTargets = [...sections, ...cards];
+            allTargets.forEach(el => el.classList.add('reveal'));
+
+            // 2) Gắn thuộc tính để "stagger" các item con
+            const staggerParents = [
+                ...document.querySelectorAll('.project-grid, .certs-grid, .experience-section')
+            ];
+            staggerParents.forEach(p => p.setAttribute('data-stagger', ''));
+
+            // Nếu người dùng thích giảm chuyển động → hiện luôn (không animate)
+            if (prefersReduce) {
+                allTargets.forEach(el => el.classList.add('in-view'));
+                return;
+            }
+
+            // 3) IntersectionObserver để bật hiệu ứng khi vào viewport
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+
+                    const el = entry.target;
+                    // Nếu là một "parent" có nhiều item con → áp dụng stagger
+                    if (el.matches('section')) {
+                        // Stagger cho các con bên trong section (nếu có)
+                        const children = el.querySelectorAll('[data-stagger] > *');
+                        children.forEach((child, i) => child.style.setProperty('--delay', `${i * 80}ms`));
+                    }
+
+                    // Nếu parent có data-stagger → set delay cho từng con
+                    if (el.hasAttribute('data-stagger')) {
+                        const kids = el.querySelectorAll(':scope > *');
+                        kids.forEach((kid, i) => kid.style.setProperty('--delay', `${i * 80}ms`));
+                    }
+
+                    // Bật lớp vào view và ngừng theo dõi để không lặp lại
+                    el.classList.add('in-view');
+                    io.unobserve(el);
+                });
+            }, { threshold: 0.16, rootMargin: '0px 0px -10% 0px' });
+
+            // Quan sát: mọi section (trừ hero) + grid cha (để stagger) + từng card/job
+            sections.forEach(s => io.observe(s));
+            staggerParents.forEach(p => io.observe(p));
+            cards.forEach(c => io.observe(c));
+        })();
+    </script>
+
 </body>
 
 </html>
