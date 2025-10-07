@@ -491,58 +491,140 @@
         });
     </script>
     <script>
+        // Optimized Scroll Reveal Animations
         (() => {
             const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            // 1) Chọn mục tiêu & gắn class reveal
+            // 1) Select targets & add reveal class
             const sections = [...document.querySelectorAll('section:not(.hero)')];
             const cards = [...document.querySelectorAll('.project-card, .cert-card, .job')];
-
             const allTargets = [...sections, ...cards];
+
             allTargets.forEach(el => el.classList.add('reveal'));
 
-            // 2) Gắn thuộc tính để "stagger" các item con
+            // 2) Mark stagger parents
             const staggerParents = [
                 ...document.querySelectorAll('.project-grid, .certs-grid, .experience-section')
             ];
             staggerParents.forEach(p => p.setAttribute('data-stagger', ''));
 
-            // Nếu người dùng thích giảm chuyển động → hiện luôn (không animate)
+            // If user prefers reduced motion → show immediately
             if (prefersReduce) {
                 allTargets.forEach(el => el.classList.add('in-view'));
                 return;
             }
 
-            // 3) IntersectionObserver để bật hiệu ứng khi vào viewport
+            // 3) Optimized IntersectionObserver with better thresholds
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
 
                     const el = entry.target;
-                    // Nếu là một "parent" có nhiều item con → áp dụng stagger
+
+                    // Apply stagger to children - OPTIMIZED: faster delays
                     if (el.matches('section')) {
-                        // Stagger cho các con bên trong section (nếu có)
                         const children = el.querySelectorAll('[data-stagger] > *');
-                        children.forEach((child, i) => child.style.setProperty('--delay', `${i * 80}ms`));
+                        children.forEach((child, i) => {
+                            child.style.setProperty('--delay', `${i * 60}ms`); // Reduced from 80ms
+                        });
                     }
 
-                    // Nếu parent có data-stagger → set delay cho từng con
                     if (el.hasAttribute('data-stagger')) {
                         const kids = el.querySelectorAll(':scope > *');
-                        kids.forEach((kid, i) => kid.style.setProperty('--delay', `${i * 80}ms`));
+                        kids.forEach((kid, i) => {
+                            kid.style.setProperty('--delay', `${i * 60}ms`); // Reduced from 80ms
+                        });
                     }
 
-                    // Bật lớp vào view và ngừng theo dõi để không lặp lại
+                    // Trigger animation
                     el.classList.add('in-view');
-                    io.unobserve(el);
+                    io.unobserve(el); // Stop observing once animated
                 });
-            }, { threshold: 0.16, rootMargin: '0px 0px -10% 0px' });
+            }, {
+                threshold: 0.12, // Reduced from 0.16 - triggers earlier
+                rootMargin: '0px 0px -8% 0px' // Reduced from -10%
+            });
 
-            // Quan sát: mọi section (trừ hero) + grid cha (để stagger) + từng card/job
+            // Observe all targets
             sections.forEach(s => io.observe(s));
             staggerParents.forEach(p => io.observe(p));
             cards.forEach(c => io.observe(c));
+
+            // 4) BONUS: Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            let lastScroll = 0;
+
+            const handleScroll = () => {
+                const currentScroll = window.pageYOffset;
+
+                // Add scrolled class after 50px
+                if (currentScroll > 50) {
+                    navbar?.classList.add('scrolled');
+                } else {
+                    navbar?.classList.remove('scrolled');
+                }
+
+                lastScroll = currentScroll;
+            };
+
+            // Throttle scroll event for performance
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // 5) BONUS: Add entrance animation to hero elements
+            const heroElements = document.querySelectorAll('.avatar-container, .tagline');
+            heroElements.forEach((el, i) => {
+                el.style.animation = `fadeInUp 0.8s ease ${i * 0.15}s both`;
+            });
+
+            // 6) BONUS: Smooth scroll to sections
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+
+                    if (target) {
+                        const offset = 80; // Account for fixed navbar
+                        const targetPosition = target.offsetTop - offset;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile menu if open
+                        document.documentElement.classList.remove('nav-open');
+                    }
+                });
+            });
         })();
+
+        // Add fadeInUp keyframes if not in CSS
+        const style = document.createElement('style');
+        style.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+        document.head.appendChild(style);
     </script>
 
 </body>
