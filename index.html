@@ -46,6 +46,35 @@
     <meta property="og:image" content="assets/avatar.jpg">
     <meta property="og:url" content="">
     <meta name="twitter:card" content="summary_large_image">
+    <style>
+        /* Enhanced Avatar Effect */
+        .avatar-container::after {
+            content: "";
+            position: absolute;
+            inset: -3px;
+            background: conic-gradient(from 0deg,
+                    var(--grad-1),
+                    var(--grad-2),
+                    var(--primary),
+                    var(--grad-1));
+            border-radius: 50%;
+            opacity: 0;
+            filter: blur(20px);
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .avatar-container:hover::after {
+            opacity: 0.6;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -68,6 +97,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
                 <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -79,6 +109,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
         <li><a href="#certificates">Certificates</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
@@ -94,7 +125,9 @@
             <div class="avatar-container" aria-label="Profile photo">
                 <img src="assets/avatar.jpg" alt="Portrait photo of Tom Huynh" class="avatar" loading="eager">
             </div>
-            <p class="tagline" aria-label="Role and location">Aspiring Software Engineer · Brisbane, QLD</p>
+            <p class="tagline" aria-label="Role and location">
+                Software Engineering Student | Seeking Internship · Brisbane, QLD
+            </p>
         </section>
 
         <!-- INTRO -->
@@ -104,9 +137,11 @@
                 <span class="highlight">I build <span class="gradient">possibilities.</span></span>
             </h1>
             <p>
-                I’m an IT student focused on becoming a software engineer. I learn fast, stay current with modern
-                tools and frameworks, and bring a problem-solving mindset to every project. My goal is to build
-                reliable, user-first software that delivers real impact in Australia.
+                Currently studying at <strong>Kaplan Business School</strong>, I'm a passionate software developer with
+                hands-on experience building real-world applications. With <strong>3+ completed projects</strong> and
+                active volunteer work at <strong>Computers 4 Learning</strong>, I combine technical skills with a drive
+                to create meaningful digital solutions. I'm seeking opportunities to contribute to innovative teams in
+                Australia's tech industry.
             </p>
             <div class="buttons" role="group" aria-label="Primary actions">
                 <a href="#contact" class="btn primary">Get In Touch</a>
@@ -115,14 +150,152 @@
         </section>
 
         <!-- SKILLS -->
-        <section class="experience" aria-labelledby="skills-title">
-            <h2 id="skills-title">EXPERIENCE WITH</h2>
-            <div class="tech-icons" aria-label="Tech stack">
-                <i class="devicon-javascript-plain colored" aria-hidden="true" title="JavaScript"></i>
-                <i class="devicon-html5-plain colored" aria-hidden="true" title="HTML5"></i>
-                <i class="devicon-css3-plain colored" aria-hidden="true" title="CSS3"></i>
-                <i class="devicon-python-plain colored" aria-hidden="true" title="Python"></i>
-                <i class="devicon-php-plain colored" aria-hidden="true" title="PHP"></i>
+        <!-- ENHANCED SKILLS SECTION -->
+        <section class="skills-detailed" id="skills" aria-labelledby="skills-title">
+            <h2 id="skills-title">TECHNICAL SKILLS</h2>
+
+            <div class="skills-categories">
+                <!-- Frontend -->
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-palette"></i> Frontend</h3>
+                    <div class="skill-items">
+                        <span class="skill-badge level-advanced">
+                            <i class="devicon-javascript-plain"></i>
+                            JavaScript
+                            <small>Advanced</small>
+                        </span>
+                        <span class="skill-badge level-advanced">
+                            <i class="devicon-html5-plain"></i>
+                            HTML5
+                            <small>Advanced</small>
+                        </span>
+                        <span class="skill-badge level-advanced">
+                            <i class="devicon-css3-plain"></i>
+                            CSS3
+                            <small>Advanced</small>
+                        </span>
+                        <span class="skill-badge level-intermediate">
+                            <i class="fa-brands fa-react"></i>
+                            React
+                            <small>Learning</small>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-server"></i> Backend</h3>
+                    <div class="skill-items">
+                        <span class="skill-badge level-intermediate">
+                            <i class="devicon-python-plain"></i>
+                            Python
+                            <small>Intermediate</small>
+                        </span>
+                        <span class="skill-badge level-intermediate">
+                            <i class="devicon-php-plain"></i>
+                            PHP
+                            <small>Intermediate</small>
+                        </span>
+                        <span class="skill-badge level-intermediate">
+                            <i class="fa-solid fa-database"></i>
+                            MySQL
+                            <small>Intermediate</small>
+                        </span>
+                        <span class="skill-badge level-basic">
+                            <i class="fa-brands fa-node"></i>
+                            Node.js
+                            <small>Learning</small>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Tools & Methods -->
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-tools"></i> Tools & Methods</h3>
+                    <div class="skill-items">
+                        <span class="skill-badge">
+                            <i class="fa-brands fa-git-alt"></i>
+                            Git/GitHub
+                        </span>
+                        <span class="skill-badge">
+                            <i class="fa-solid fa-diagram-project"></i>
+                            Agile/Scrum
+                        </span>
+                        <span class="skill-badge">
+                            <i class="fa-solid fa-code"></i>
+                            REST APIs
+                        </span>
+                        <span class="skill-badge">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            Responsive Design
+                        </span>
+                        <span class="skill-badge">
+                            <i class="fa-brands fa-figma"></i>
+                            Figma
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOFT SKILLS & LANGUAGES -->
+        <section class="soft-skills-section" aria-labelledby="soft-skills-title">
+            <div class="soft-skills-container">
+                <div class="soft-skills-left">
+                    <h2 id="soft-skills-title">SOFT SKILLS</h2>
+                    <div class="soft-skills-grid">
+                        <div class="soft-skill-item">
+                            <i class="fa-solid fa-comments"></i>
+                            <span>Communication</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fa-solid fa-users-gear"></i>
+                            <span>Team Collaboration</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Time Management</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Problem Solving</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fa-solid fa-rocket"></i>
+                            <span>Fast Learner</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fa-solid fa-bullseye"></i>
+                            <span>Detail-Oriented</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="soft-skills-right">
+                    <h2>LANGUAGES</h2>
+                    <div class="languages-list">
+                        <div class="language-item">
+                            <span class="lang-flag">🇬🇧</span>
+                            <div class="lang-info">
+                                <strong>English</strong>
+                                <span class="lang-level">Professional Working Proficiency</span>
+                                <div class="lang-bar">
+                                    <div class="lang-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="language-item">
+                            <span class="lang-flag">🇻🇳</span>
+                            <div class="lang-info">
+                                <strong>Vietnamese</strong>
+                                <span class="lang-level">Native</span>
+                                <div class="lang-bar">
+                                    <div class="lang-progress" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -138,6 +311,21 @@
                         <p>CLICK HERE TO VISIT</p>
                         <h3>GTA STREET</h3>
 
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fa-solid fa-users"></i>
+                                <span>500+ Users</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fa-solid fa-gauge-high"></i>
+                                <span>99% Uptime</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fa-solid fa-database"></i>
+                                <span>MySQL</span>
+                            </div>
+                        </div>
+
                         <div class="project-meta" aria-label="Technologies">
                             <span class="tag">Lua</span>
                             <span class="tag">FiveM</span>
@@ -148,16 +336,17 @@
                             <a class="btn-icon" href="https://gtastreet.com/" target="_blank" rel="noopener"
                                 aria-label="Live Demo">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span>Live Demo</span>
                             </a>
                             <a class="btn-icon" href="https://github.com/TomHuynhAU/GTASTREET-WEBSITE" target="_blank"
                                 rel="noopener" aria-label="View Code on GitHub">
                                 <i class="fa-brands fa-github"></i>
+                                <span>View Code</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Overlay toàn card: nằm cuối cùng, ngoài project-info -->
-                    <a class="card-cover" href="https://gtastreet.com" target="_blank" rel="noopener" target="_blank"
+                    <a class="card-cover" href="https://gtastreet.com" target="_blank" rel="noopener"
                         aria-label="Open GTA STREET"></a>
                 </article>
 
@@ -168,6 +357,21 @@
                         <p>CLICK HERE TO VISIT</p>
                         <h3>Australia Sales Dashboard</h3>
 
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fa-solid fa-chart-line"></i>
+                                <span>Real-time Data</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                                <span>Responsive</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Fast Load</span>
+                            </div>
+                        </div>
+
                         <div class="project-meta" aria-label="Technologies">
                             <span class="tag">Python</span>
                             <span class="tag">Responsive</span>
@@ -177,10 +381,12 @@
                             <a class="btn-icon" href="https://au-sales-dashboard-1.onrender.com/" target="_blank"
                                 rel="noopener" aria-label="Live Demo">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span>Live Demo</span>
                             </a>
                             <a class="btn-icon" href="https://github.com/TomHuynhAU/au-sales-dashboard" target="_blank"
                                 rel="noopener" aria-label="View Code on GitHub">
                                 <i class="fa-brands fa-github"></i>
+                                <span>View Code</span>
                             </a>
                         </div>
                     </div>
@@ -188,11 +394,27 @@
                         aria-label="Open AU Sales Dashboard" tabindex="-1"></a>
                 </article>
 
+                <!-- Project 3 -->
                 <article class="project-card">
                     <img src="assets/project3.png" alt="Preview for CSS Tutorial project" loading="lazy">
                     <div class="project-info">
                         <p>CLICK HERE TO VISIT</p>
                         <h3>TomWings - SkyBooking Website</h3>
+
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fa-solid fa-palette"></i>
+                                <span>Modern UI</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fa-solid fa-code"></i>
+                                <span>Clean Code</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fa-solid fa-rocket"></i>
+                                <span>Deployed</span>
+                            </div>
+                        </div>
 
                         <div class="project-meta" aria-label="Technologies">
                             <span class="tag">HTML</span>
@@ -204,10 +426,12 @@
                             <a class="btn-icon" href="https://skybooking-web.vercel.app/" target="_blank" rel="noopener"
                                 aria-label="Live Demo">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span>Live Demo</span>
                             </a>
                             <a class="btn-icon" href="https://github.com/TomHuynhAU/skybooking-web" target="_blank"
                                 rel="noopener" aria-label="View Code on GitHub">
                                 <i class="fa-brands fa-github"></i>
+                                <span>View Code</span>
                             </a>
                         </div>
                     </div>
@@ -264,6 +488,54 @@
                     I became a student at Greenwich University and had my first exposure to the international student
                     environment along with experiences with the IT major.
                 </p>
+            </div>
+        </section>
+
+        <!-- VOLUNTEER EXPERIENCE -->
+        <section class="volunteer-section" id="volunteer" aria-labelledby="volunteer-title">
+            <h2 id="volunteer-title">VOLUNTEER EXPERIENCE</h2>
+
+            <div class="volunteer-grid">
+                <!-- Card 1 -->
+                <article class="volunteer-card">
+                    <div class="volunteer-header">
+                        <div class="org-info">
+                            <img src="assets/icons/c4l.png" alt="Organization logo" class="org-icon">
+                            <div>
+                                <h3>Computers 4 Learning</h3>
+                                <span class="org-name">Local Non-Profit Organization</span>
+                            </div>
+                        </div>
+                        <span class="volunteer-date">Sep 2025 – Present</span>
+                    </div>
+
+                    <p class="volunteer-desc">
+                        Computers 4 Learning (C4L) is a volunteer-driven non-profit organization in Australia that
+                        refurbishes donated computers and provides them to schools, students, and community groups. The
+                        goal is to reduce electronic waste, promote digital inclusion, and give disadvantaged people
+                        access to affordable technology. Volunteers contribute by repairing devices, installing
+                        software, and supporting community projects.
+                    </p>
+
+                    <div class="volunteer-impact">
+                        <div class="impact-stat">
+                            <strong>30%</strong>
+                            <span>Donation Increase</span>
+                        </div>
+                        <div class="impact-stat">
+                            <strong>10+</strong>
+                            <span>Team Members</span>
+                        </div>
+                    </div>
+
+                    <div class="volunteer-tags">
+                        <span class="tag">Software</span>
+                        <span class="tag">Hardware</span>
+                        <span class="tag">System OS</span>
+                    </div>
+                </article>
+
+                <!-- Thêm cards khác tương tự -->
             </div>
         </section>
 
@@ -371,11 +643,27 @@
         <section class="contact-section" id="contact" aria-labelledby="contact-title">
             <div class="contact-container">
                 <h2 id="contact-title">Contact</h2>
-                <p>
-                    I’m open to internships and junior software engineering roles in Australia. If my work resonates
-                    with you,
-                    let’s chat.
-                </p>
+                <div class="contact-intro">
+                    <p>
+                        I'm actively seeking <strong>internship</strong> and <strong>junior software engineering
+                            roles</strong> in Australia.
+                        Available for <span class="highlight-text">immediate start</span>.
+                    </p>
+                    <div class="contact-badges">
+                        <span class="contact-badge">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Brisbane Based
+                        </span>
+                        <span class="contact-badge">
+                            <i class="fa-solid fa-briefcase"></i>
+                            Full-time / Part-time
+                        </span>
+                        <span class="contact-badge">
+                            <i class="fa-solid fa-clock"></i>
+                            Available Now
+                        </span>
+                    </div>
+                </div>
                 <p class="email">
                     <i class="fa-regular fa-envelope" aria-hidden="true"></i>
                     <a href="mailto:quocthong05092002@gmail.com" aria-label="Email me">quocthong05092002@gmail.com</a>
@@ -463,7 +751,7 @@
   </script>
     <script>
         const navToggle = document.getElementById('navToggle');
-        const primaryNav = document.getElementById('primaryNav');
+        const navDrawer = document.getElementById('navDrawer');
         const navBackdrop = document.getElementById('navBackdrop');
 
         function setOpen(open) {
@@ -481,7 +769,7 @@
         });
 
         // Đóng khi bấm link
-        primaryNav?.addEventListener('click', e => {
+        navDrawer?.addEventListener('click', e => {  // ← Fixed
             if (e.target.closest('a')) setOpen(false);
         });
 
@@ -500,14 +788,14 @@
 
             // 1) Select targets & add reveal class
             const sections = [...document.querySelectorAll('section:not(.hero)')];
-            const cards = [...document.querySelectorAll('.project-card, .cert-card, .job')];
+            const cards = [...document.querySelectorAll('.project-card, .cert-card, .job, .volunteer-card')];
             const allTargets = [...sections, ...cards];
 
             allTargets.forEach(el => el.classList.add('reveal'));
 
             // 2) Mark stagger parents
             const staggerParents = [
-                ...document.querySelectorAll('.project-grid, .certs-grid, .experience-section')
+                ...document.querySelectorAll('.project-grid, .certs-grid, .experience-section, .volunteer-grid')
             ];
             staggerParents.forEach(p => p.setAttribute('data-stagger', ''));
 
@@ -630,6 +918,27 @@
         document.head.appendChild(style);
     </script>
 
+    <script>
+        // Typing Effect for Hero Tagline
+        const taglineElement = document.querySelector('.tagline');
+        if (taglineElement) {
+            const originalText = taglineElement.textContent;
+            taglineElement.textContent = '';
+            taglineElement.style.opacity = '1';
+
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    taglineElement.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+
+            // Start typing after avatar animation
+            setTimeout(typeWriter, 800);
+        }
+    </script>
 </body>
 
 </html>
