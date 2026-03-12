@@ -28,7 +28,6 @@
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
                 <a href="#experience">Experience</a>
-                <a href="#ai-lab">AI</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span>
@@ -42,7 +41,6 @@
         <a href="#skills" class="mobile-link">Skills</a>
         <a href="#projects" class="mobile-link">Projects</a>
         <a href="#experience" class="mobile-link">Experience</a>
-        <a href="#ai-lab">AI</a>
     </div>
 
     <main>
@@ -280,66 +278,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="ai-lab reveal" id="ai-lab">
-            <div class="section-header">
-                <span class="section-num">04</span>
-                <h3>AI Recruiter Assistant</h3>
-            </div>
-
-            <div class="ai-shell">
-                <div class="ai-intro-card">
-                    <div class="ai-kicker">
-                        <span class="status-dot ai-dot"></span>
-                        <span>Interactive portfolio intelligence</span>
-                    </div>
-                    <h4>Paste a job description and get a tailored match in seconds.</h4>
-                    <p>
-                        This demo analyzes role keywords, maps them against my skills and projects, and returns a
-                        concise recruiter-friendly summary.
-                    </p>
-
-                    <div class="ai-chips">
-                        <button class="ai-chip" type="button"
-                            data-prompt="Frontend internship focusing on React, JavaScript, responsive UI, and collaboration.">
-                            Frontend
-                        </button>
-                        <button class="ai-chip" type="button"
-                            data-prompt="Software engineering internship requiring Python, APIs, problem-solving, and backend fundamentals.">
-                            Software Engineer
-                        </button>
-                        <button class="ai-chip" type="button"
-                            data-prompt="Junior DevOps role requiring Git, deployment, APIs, troubleshooting, and scalable systems thinking.">
-                            DevOps
-                        </button>
-                    </div>
-                </div>
-
-                <div class="ai-panel">
-                    <label class="ai-label" for="jobDescription">Job description / hiring brief</label>
-                    <textarea id="jobDescription" class="ai-textarea"
-                        placeholder="Example: We are looking for an intern with JavaScript, React, Python, API integration, Git, and strong communication skills..."></textarea>
-
-                    <div class="ai-actions">
-                        <button class="btn btn-primary" id="runAiMatch" type="button">
-                            <span>Run AI Match</span>
-                            <i class="fa-solid fa-sparkles"></i>
-                        </button>
-
-                        <button class="btn btn-secondary" id="clearAiMatch" type="button">
-                            <span>Clear</span>
-                        </button>
-                    </div>
-
-                    <div class="ai-output" id="aiOutput">
-                        <div class="ai-placeholder">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            <p>Your AI-powered portfolio summary will appear here.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>
@@ -415,173 +353,6 @@
             })
 
         })
-
-        // AI Lab
-        const jobDescription = document.getElementById("jobDescription");
-        const runAiMatch = document.getElementById("runAiMatch");
-        const clearAiMatch = document.getElementById("clearAiMatch");
-        const aiOutput = document.getElementById("aiOutput");
-
-        document.querySelectorAll(".ai-chip").forEach((chip) => {
-            chip.addEventListener("click", () => {
-                jobDescription.value = chip.dataset.prompt;
-                runPortfolioAi();
-            });
-        });
-
-        runAiMatch.addEventListener("click", runPortfolioAi);
-
-        clearAiMatch.addEventListener("click", () => {
-            jobDescription.value = "";
-            aiOutput.innerHTML = `
-      <div class="ai-placeholder">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        <p>Your AI-powered portfolio summary will appear here.</p>
-      </div>
-    `;
-        });
-
-        async function runPortfolioAi() {
-            const input = jobDescription.value.trim();
-
-            if (!input) {
-                aiOutput.innerHTML = `
-        <div class="ai-placeholder">
-          <i class="fa-solid fa-circle-info"></i>
-          <p>Please paste a job description or tap one of the role shortcuts above.</p>
-        </div>
-      `;
-                return;
-            }
-
-            aiOutput.innerHTML = `
-      <div class="ai-placeholder">
-        <i class="fa-solid fa-spinner fa-spin"></i>
-        <p>Analyzing role fit...</p>
-      </div>
-    `;
-
-            try {
-                const response = await fetch("/api/ai-match", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        jobDescription: input
-                    })
-                });
-
-                const data = await response.json();
-
-                if (!response.ok) {
-                    aiOutput.innerHTML = `
-          <div class="ai-placeholder">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <p>${escapeHtml(data.error || "Something went wrong.")}</p>
-          </div>
-        `;
-                    return;
-                }
-
-                renderAiResult(data);
-            } catch (error) {
-                aiOutput.innerHTML = `
-        <div class="ai-placeholder">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <p>Unable to connect to AI service.</p>
-        </div>
-      `;
-            }
-        }
-
-        function renderAiResult(data) {
-            const score = Number(data.matchScore || 0);
-            const matchedSkills = Array.isArray(data.matchedSkills) ? data.matchedSkills : [];
-            const recommendedProjects = Array.isArray(data.recommendedProjects) ? data.recommendedProjects : [];
-            const strengths = Array.isArray(data.strengths) ? data.strengths : [];
-            const missingSkills = Array.isArray(data.missingSkills) ? data.missingSkills : [];
-            const summary = data.summary || "No summary returned.";
-
-            aiOutput.innerHTML = `
-      <div class="ai-result">
-        <div class="ai-result-top">
-          <div>
-            <span class="ai-result-label">Estimated fit</span>
-            <h4>${escapeHtml(String(score))}% match</h4>
-          </div>
-          <div class="ai-score-ring" style="--score:${Math.max(0, Math.min(score, 100))}">
-            <span>${escapeHtml(String(score))}</span>
-          </div>
-        </div>
-
-        <div class="ai-result-grid">
-          <div class="ai-result-card">
-            <span class="ai-result-label">Matched skills</span>
-            <div class="result-tags">
-              ${matchedSkills.length
-                    ? matchedSkills.map(skill => `<span>${escapeHtml(skill)}</span>`).join("")
-                    : `<span>No strong skill overlap found</span>`
-                }
-            </div>
-          </div>
-
-          <div class="ai-result-card">
-            <span class="ai-result-label">Missing / weaker areas</span>
-            <div class="result-tags">
-              ${missingSkills.length
-                    ? missingSkills.map(skill => `<span>${escapeHtml(skill)}</span>`).join("")
-                    : `<span>No major gap highlighted</span>`
-                }
-            </div>
-          </div>
-
-          <div class="ai-result-card ai-result-card-wide">
-            <span class="ai-result-label">Recommended projects</span>
-            <div class="ai-bullets">
-              ${recommendedProjects.length
-                    ? recommendedProjects.map(project => `
-                    <div class="ai-bullet">
-                      <strong>${escapeHtml(project.name || "Untitled project")}</strong>
-                      <p>${escapeHtml(project.reason || "")}</p>
-                    </div>
-                  `).join("")
-                    : `<p class="ai-summary">No project recommendations returned.</p>`
-                }
-            </div>
-          </div>
-
-          <div class="ai-result-card ai-result-card-wide">
-            <span class="ai-result-label">Recruiter summary</span>
-            <p class="ai-summary">${escapeHtml(summary)}</p>
-          </div>
-
-          <div class="ai-result-card ai-result-card-wide">
-            <span class="ai-result-label">Standout strengths</span>
-            <div class="ai-bullets">
-              ${strengths.length
-                    ? strengths.map(item => `
-                    <div class="ai-bullet">
-                      <p>${escapeHtml(item)}</p>
-                    </div>
-                  `).join("")
-                    : `<p class="ai-summary">No standout strengths returned.</p>`
-                }
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-        }
-
-        function escapeHtml(str) {
-            return String(str)
-                .replaceAll("&", "&amp;")
-                .replaceAll("<", "&lt;")
-                .replaceAll(">", "&gt;")
-                .replaceAll('"', "&quot;")
-                .replaceAll("'", "&#039;");
-        }
     </script>
 </body>
 
